@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html><head>
+ <meta charset="gbk">
+ <meta name="author" content="niasw">
+ <meta name="keywords" content="slot machine">
+ <link rel="stylesheet" type="text/css" href="css/main.css">
+ <link rel="license" href="">
+ <link rel="icon" href="res/icon.png">
+ <script src="lib/random-js/lib/random.min.js"></script>
+ <title>Slot Machine Simulator</title>
+</head><body>
+ <div class="fltcenter col-18">
+  <pre class="txtcenter">
+Random Algorithm: MT19937
+ ___________    
+/   |   |   \   
+</pre><pre id="core" class="txtcenter" onclick="javascript:shuffle();">
+| 0 | 0 | 0 |==3
+</pre><pre class="txtcenter">
+\___|___|___/   
+</pre><pre class="txtcenter">
+
+web by Sun Smallwhite
+
+</pre>
+ <p class="note txtcenter">
+Notes<br>
+1. MT19937: Mersenne Twister based on the Mersenne prime 2<sup>19937</sup>-1.<br> It is an uniformly distributed pseudo-random number generator.<br>
+2. Random Seed = Milliseconds from 1970-01-01 00:00 UTC to now<br>
+3. Random-js (<a href="https://github.com/ckknight/random-js">https://github.com/ckknight/random-js</a>) is used here. Thank Cameron Knight.
+ </p>
+ </div>
+ <script>
+var status = 0; // 0: idle state, n>0: the n-th digit
+var result = 0; // lucky member id
+var MAXNUM = 500; // number of members, within 1000
+var digits = new Array(3); // digits right now
+var animeHandle = null;
+var aux1 = 0; // aux number (for anime)
+var randEng = null; // random engine
+function initialize() {
+  for (var it=0;it<3;++it) {
+    digits[it] = 0;
+  }
+  randEng = new Random(Random.engines.mt19937().autoSeed()); // seed with milliseconds from 1970-01-01 00:00 UTC to now
+  console.log("initialized.");
+}
+initialize();
+function shuffle() {
+  console.log("shuffle() called. "+status);
+  if (status>0) {
+    digits[status-1]=parseInt(Math.floor(result/Math.pow(10,3-status)))%10;
+  } else {
+    result=parseInt(randEng.integer(0,MAXNUM-1));
+    animeHandle = setInterval("anime(status);",50);
+  }
+  status=parseInt(status)+1;
+  if (status>3) {
+    if (animeHandle) {
+      clearInterval(animeHandle);
+    }
+    anime(status);
+    animeHandle = null;
+    status=0;
+  }
+  console.log("digits: "+digits[0]+digits[1]+digits[2]);
+  console.log("result: "+result);
+}
+function anime(status) {
+  var coreDOM = document.getElementById("core");
+  if (status>0) {
+    var text2put = "|";
+    for (var it=0;it<3;++it) {
+      if (it>=status-1) {
+        text2put=text2put+" "+parseInt(Math.floor(Math.random()*10)).toString()+" |";
+      } else {
+        text2put=text2put+" "+digits[it].toString()+" |";
+      }
+    }
+    text2put=text2put+"=="+((aux1)?"-":"3");
+    aux1=1-aux1;
+    coreDOM.text=text2put;
+    coreDOM.content=text2put;
+    coreDOM.innerHTML=text2put;
+  }
+}
+ </script>
+</body></html>

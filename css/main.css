@@ -1,0 +1,98 @@
+/*
+ * CSS for L02 Group Website
+ * by Sun Smallwhite
+ * <sun.niasw@gmail.com>
+ */
+body {
+    font-family: Courier, WenQuanYiHei, monospace;
+    min-height: 740px;
+
+    background: rgb(255, 255, 170);
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 1000, from(rgb(255, 250, 170)), to(rgb(230, 200, 100)));
+    background: -webkit-radial-gradient(rgb(255, 250, 170), rgb(230, 200, 100));
+    background:    -moz-radial-gradient(rgb(255, 250, 170), rgb(230, 200, 100));
+    background:     -ms-radial-gradient(rgb(255, 250, 170), rgb(230, 200, 100));
+    background:      -o-radial-gradient(rgb(255, 250, 170), rgb(230, 200, 100));
+    background:         radial-gradient(rgb(255, 250, 170), rgb(230, 200, 100));
+
+    color: rgb(80, 40, 0);
+}
+/* grid frame */
+* {box-sizing:border-box;}
+/* column width */
+.col-1 {width: 5.56%;}
+.col-2 {width: 11.11%;}
+.col-3 {width: 16.66%;}
+.col-4 {width: 22.22%;}
+.col-5 {width: 27.77%;}
+.col-6 {width: 33.33%;}
+.col-7 {width: 38.88%;}
+.col-8 {width: 44.44%;}
+.col-9 {width: 50.00%;}
+.col-10 {width: 55.55%;}
+.col-11 {width: 61.11%;}
+.col-12 {width: 66.66%;}
+.col-13 {width: 72.22%;}
+.col-14 {width: 77.77%;}
+.col-15 {width: 83.33%;}
+.col-16 {width: 88.88%;}
+.col-17 {width: 94.44%;}
+.col-18 {width: 100%;}
+/* text align, for paragraph */
+.txtcenter {text-align:center;margin:0 auto;}
+.txtleft {text-align:left;margin:0 0 0 auto;}
+.txtright {text-align:right;margin:0 auto 0 0;}
+/* float align, for division */
+.fltcenter {float:left;clear:none;margin:0 auto;}
+.fltleft {float:left;clear:left;margin:0 0 0 auto;}
+.fltright {float:right;clear:right;margin:0 auto 0 0;}
+/* fixed module */
+.fixed {position:fixed;}
+.top {top:0;}
+/* decoration */
+.shine {text-shadow:0 0 3px white;}/*,0 0 50px white*/
+.darkbg {
+ color:#ffffec;
+ border-radius:15px;
+ box-shadow:0 0 10px black;
+ background:rgba(0,0,0,0.6);
+ filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#8F000000,endcolorstr=#8F000000); /*IE*/
+}
+.shinebg {
+ color:#291222;
+ border-radius:15px;
+ box-shadow:0 0 10px white;
+ background:rgba(255,255,255,0.4);
+ filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#8FFFFFFF,endcolorstr=#8FFFFFFF); /*IE*/
+}
+.topshinebg {
+ color:#291222;
+ border-radius:0 0 15px 15px;
+ margin-top:0;
+ box-shadow:0 0 10px white;
+ background:rgba(255,255,255,0.6);
+ filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#8FFFFFFF,endcolorstr=#8FFFFFFF); /*IE*/
+}
+p.topshinebg span a {
+ margin:0 10px;
+}
+.grey, a.grey, a.grey:link, a.grey:visited {
+ color:#aaaaaa;
+}
+/* content environment */
+div.content {padding:25px;margin:25px 0;}
+div.content h3,p {margin-top:0;margin-bottom:0;}
+.full {width:100%;}
+p.content {font-size:16px;line-height:20px;}
+pre,p {
+ font-family: 'Droid Sans Mono', Consolas, 'Lucida Console', Courier, monospace;
+ font-size: 32px;
+}
+p.note {font-size:14px;line-height:18px;}
+pre#core,pre#core:visited,pre#core:hover {
+ cursor: pointer;
+ color: rgb(80, 40, 0);
+}
+pre#core:active {
+ color: rgb(160, 120, 0);
+}
